@@ -1,0 +1,164 @@
+<%
+function vcardUuid (vcard, secret) {
+  const hash = CryptoJS.HmacMD5(JSON.stringify(vcard), secret)
+  const hex = CryptoJS.enc.Hex.stringify(hash)
+  return hex.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5')
+}
+function gaScreenView (vcard) {
+  const CARD_NAME = 'Chatbot台灣COSCUP-2020/07/24'
+  return `https://www.google-analytics.com/collect?${Qs.stringify({
+    an: 'LINE 數位版名片',
+    cd: `${CARD_NAME}-${vcard.title}`, // 畫面名稱，在此用來紀錄數位版名片的版本
+    cid: vcardUuid(vcard, CARD_NAME), // uuid
+    ds: 'app', // 資料來源，填寫為 app
+    sc: 'start',
+    t: 'screenview',
+    tid: 'UA-39556213-12', // GA 追蹤代碼
+    ul: 'zh-tw', // locale
+    v: 1, // api version
+  })}`
+}
+function escapeStr (str) {
+  if (!_.isString(str)) return str
+  return JSON.stringify(str).slice(1, -1)
+}
+%>
+
+{
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip1.jpg",
+            "size": "full",
+            "aspectMode": "cover",
+            "aspectRatio": "2:3",
+            "gravity": "top"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "text",
+                        "text": "📆 立即預約",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "action",
+                      "uri": "https://www.ohho-hair.com.tw/%e4%b8%80%e8%88%ac%e9%a0%90%e7%b4%84/"
+                    }
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "filler"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "text",
+                        "text": "🎁 出示優惠券",
+                        "color": "#ffffff",
+                        "flex": 0,
+                        "offsetTop": "-2px"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "spacing": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "action",
+                      "uri": "line://app/1654354303-nPr4LbmN?target=birth_mode_qrcode&serial_no=2021010001"
+                    }
+                  },
+                  {
+                    "type": "filler"
+                  }
+                ],
+                "borderWidth": "1px",
+                "cornerRadius": "4px",
+                "spacing": "sm",
+                "borderColor": "#ffffff",
+                "margin": "xxl",
+                "height": "40px"
+              }
+            ],
+            "position": "absolute",
+            "offsetBottom": "0px",
+            "offsetStart": "0px",
+            "offsetEnd": "0px",
+            "backgroundColor": "#03303Acc",
+            "paddingAll": "20px",
+            "paddingTop": "18px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "剪、燙、染、護 8折",
+                "color": "#ffffff",
+                "align": "center",
+                "size": "xs",
+                "offsetTop": "3px"
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "20px",
+            "offsetTop": "18px",
+            "backgroundColor": "#ff334b",
+            "offsetStart": "18px",
+            "height": "25px",
+            "width": "135px"
+          }
+        ],
+        "paddingAll": "0px"
+      }
+    }
