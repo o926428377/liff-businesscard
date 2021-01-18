@@ -25,6 +25,9 @@ function escapeStr (str) {
 %>
 
 {
+  "type": "carousel",
+  "contents": [
+    {
       "type": "bubble",
       "body": {
         "type": "box",
@@ -133,7 +136,7 @@ function escapeStr (str) {
             "offsetBottom": "0px",
             "offsetStart": "0px",
             "offsetEnd": "0px",
-            "backgroundColor": "#03303Acc",
+            "backgroundColor": "#ff8080",
             "paddingAll": "20px",
             "paddingTop": "18px"
           },
@@ -162,3 +165,5 @@ function escapeStr (str) {
         "paddingAll": "0px"
       }
     }
+  ]
+}
