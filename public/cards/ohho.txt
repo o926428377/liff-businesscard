@@ -32,7 +32,7 @@ function escapeStr (str) {
         "contents": [
           {
             "type": "image",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip1.jpg",
+            "url": "https://raw.githubusercontent.com/o926428377/liff-businesscard/master/public/cards/birth_gift.jpg",
             "size": "full",
             "aspectMode": "cover",
             "aspectRatio": "2:3",
